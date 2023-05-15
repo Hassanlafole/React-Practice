@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor GAME</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="i.js">
+</head>
+<body>
+    <div id="game">
+        <h1>Rock, Paper, Scissors</h1>
+        <div id="player-choice"></div>
+        <div id="computer-choice"></div>
+        <div id="result"></div>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <button id="reset">Reset</button>
+
+      </div>
+      
+    <script>
+        const choices = ['rock', 'paper', 'scissors'];
+const playerChoice = document.getElementById('player-choice');
+const computerChoice = document.getElementById('computer-choice');
+const result = document.getElementById('result');
+const buttons = document.querySelectorAll('button');
+let score = 0;
+const scoreDisplay = document.getElementById('score');
+
+const resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', reset);
+
+function reset() {
+  score = 0;
+  scoreDisplay.innerHTML = `Score: ${score}`;
+  playerChoiceImg.src = "";
+  playerChoice.innerHTML = "";
+  computerChoice.innerHTML = "";
+  result.innerHTML = "";
+}
+
+
+
+buttons.forEach(button => {
+  button.addEventListener('click', play);
+});
+
+function play(e) {
+  const playerSelection = e.target.id;
+  const computerSelection = choices[Math.floor(Math.random() * choices.length)];
+
+  playerChoice.innerHTML = `You chose: ${playerSelection}`;
+  computerChoice.innerHTML = `Computer chose: ${computerSelection}`;
+
+  if (playerSelection === computerSelection) {
+    result.innerHTML = 'It\'s a tie!';
+  } else if (
+    (playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'paper' && computerSelection === 'rock') ||
+    (playerSelection === 'scissors' && computerSelection === 'paper')
+  ) {
+    result.innerHTML = 'You win!';
+  } else {
+    result.innerHTML = 'You lose!';
+  }
+
+  if (result.innerHTML === 'You win!') {
+    score++;
+    scoreDisplay.innerHTML = `Score: ${score}`;
+  }
+}
+
+    </script>
+</body>
+</html>

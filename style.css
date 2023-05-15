@@ -1,0 +1,20 @@
+#game {
+    text-align: center;
+  }
+  
+  #player-choice, #computer-choice, #result {
+    margin: 20px 0;
+  }
+  
+  button {
+    margin: 0 10px;
+  }
+#rock{
+    background-color: green;
+}  
+#paper{
+    background-color: yellow;
+}
+#scissors{
+    background-color: red;
+}
